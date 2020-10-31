@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+ mysql:
+  container_name: app-db
+  image: mysql:latest
+  environment: 
+   MYSQL_DATABASE: etud
+   MYSQL_ROOT_PASSWORD: 'rootpassword'
+   MYSQL_USER: 'jaespes'
+   MYSQL_PASSWORD: 'jaespes'
+  volumes:
+   - ./db_data:/var/lib/mysql:rw
+   - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+  ports:
+   - '3306:3306'
+  network_mode: 'host'
+  healthcheck:
+   test: 'exit 0'
+
+ app:
+  container_name: app-gui
+  build:
+   context: app
+   dockerfile: Dockerfile
+  stdin_open: true
+  tty: true
+  environment:
+   - DISPLAY
+  ports:
+   - '5900:5900'
+  network_mode: 'host'
+  volumes:
+   - /tmp/.X11-unix
+  depends_on:
+   - mysql
+
+volumes:
+ db_data:
