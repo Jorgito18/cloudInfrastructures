@@ -13,8 +13,8 @@ public class AppMain {
 	      "com.mysql.jdbc.Driver";
 	   static final String DB_URL =
 	      "jdbc:mysql://127.0.0.1/etud?relaxAutoCommit=true";
-	   static final String DB_USER = "bdelbouys";
-	   static final String DB_PASS = "bdelbouys";
+	   static final String DB_USER = "user";
+	   static final String DB_PASS = "password";
 
 	   public static void main(String[] args) {
 		Connection conn = null;
