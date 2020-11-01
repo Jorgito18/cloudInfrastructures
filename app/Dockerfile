@@ -15,6 +15,3 @@ RUN javac -cp "./lib/miglayout-3.5.5-swing-java14.jar:./lib/mysql-connector-java
 CMD java -cp ".:./lib/miglayout-3.5.5-swing-java14.jar:./lib/mysql-connector-java-5.1.48.jar" \
  gui.AppMain
 
-RUN docker build -t db-gui .
-
-RUN docker run -i -t --net=host -e DISPLAY -v /tmp/.X11-unix db-gui
