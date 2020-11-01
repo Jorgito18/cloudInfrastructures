@@ -2,7 +2,9 @@ FROM ubuntu:latest
 
 MAINTAINER Jorge Ara Espes <jorgito98ara@gmail.com>
 
-RUN sudo apt-get update && apt-get install -y openjdk-8-jdk 
+RUN apt-get update && apt-get install -y \
+ openjdk-8-jdk \
+ sudo
 
 RUN echo "JAVA_HOME=$(which java)" | sudo tee -a /etc/environment
 
@@ -14,4 +16,5 @@ RUN javac -cp "./lib/miglayout-3.5.5-swing-java14.jar:./lib/mysql-connector-java
 
 CMD java -cp ".:./lib/miglayout-3.5.5-swing-java14.jar:./lib/mysql-connector-java-5.1.48.jar" \
  gui.AppMain
+
 
